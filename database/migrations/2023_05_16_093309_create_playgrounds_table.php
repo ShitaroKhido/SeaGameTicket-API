@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('playgrounds', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->char('zone', 8);
+            $table->unsignedBigInteger('stadium_id');
+            $table->foreign('stadium_id')->references('id')->on('stadiums');
         });
     }
 

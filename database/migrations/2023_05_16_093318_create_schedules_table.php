@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('sport_id');
+            $table->unsignedBigInteger('first_country');
+            $table->unsignedBigInteger('second_country');
+            $table->unsignedBigInteger('event_id');
+            $table->unsignedBigInteger('playground_id');
+            $table->foreign('sport_id')->references('id')->on('sports');
+            $table->foreign('first_country')->references('id')->on('countries');
+            $table->foreign('second_country')->references('id')->on('countries');
+            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('playground_id')->references('id')->on('playgrounds');
+            $table->time('start_time');
+            $table->time('end_time');
         });
     }
 
