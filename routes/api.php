@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CountriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // SeaGame Ticket Route:
 Route::prefix('/seagame')->name('seagame')->group(function () {
-    // /***/
-    // Route::resource('/country', function () {
-    // });
-    // /***/
-    // Route::resource('/country', function () {
-    // });
+    /***/
+    Route::resource('/country', CountriesController::class);
+    /***/
+    Route::resource('/country', CountriesController::class);
 });
