@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// SeaGame Ticket Route:
+Route::prefix('/seagame')->name('seagame')->group(function () {
+    /***/
+    Route::resource('/country', function () {
+    });
+    /***/
+    Route::resource('/country', function () {
+    });
+});
