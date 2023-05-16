@@ -21,10 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // SeaGame Ticket Route:
 Route::prefix('/seagame')->name('seagame')->group(function () {
-    /***/
-    Route::resource('/country', function () {
-    });
-    /***/
-    Route::resource('/country', function () {
-    });
+    // /***/
+    // Route::resource('/country', function () {
+    // });
+    // /***/
+    // Route::resource('/country', function () {
+    // });
 });
