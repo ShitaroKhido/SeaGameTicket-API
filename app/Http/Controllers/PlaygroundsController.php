@@ -12,7 +12,7 @@ class PlaygroundsController extends Controller
      */
     public function index()
     {
-        //
+        return Playgrounds::all();
     }
 
     /**
@@ -20,15 +20,21 @@ class PlaygroundsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->all() !== null) {
+            Playgrounds::create([
+                'zone' => $request->all()['zone'],
+                'stadium_id' => $request->all()['stadium_id']
+            ]);
+            return response(['message' => 'Success', 'data' => $request->all()], 200);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Playgrounds $playgrounds)
+    public function show(Playgrounds $playgrounds, $id)
     {
-        //
+        return $playgrounds::find($id);
     }
 
     /**
@@ -42,8 +48,8 @@ class PlaygroundsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Playgrounds $playgrounds)
+    public function destroy(Playgrounds $playgrounds, $id)
     {
-        //
+        $playgrounds::find($id)->delete;
     }
 }

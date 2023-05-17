@@ -10,8 +10,23 @@ class Schedules extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public function events(): HasOne
+    protected $fillable = [
+        'sport_id',
+        'first_country',
+        'second_country',
+        'event_id',
+        'playground_id',
+        'start_time',
+        'end_time'
+    ];
+
+    public function sport(): HasOne
     {
-        return $this->hasOne(Events::class);
+        return $this->hasOne(Sports::class);
+    }
+
+    public function playground(): HasOne
+    {
+        return $this->hasOne(Playgrounds::class);
     }
 }

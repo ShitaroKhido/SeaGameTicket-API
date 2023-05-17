@@ -12,7 +12,7 @@ class CountriesController extends Controller
      */
     public function index()
     {
-        //
+        return Countries::all();
     }
 
     /**

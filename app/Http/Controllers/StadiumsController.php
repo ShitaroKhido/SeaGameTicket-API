@@ -12,7 +12,7 @@ class StadiumsController extends Controller
      */
     public function index()
     {
-        //
+        return Stadiums::all();
     }
 
     /**

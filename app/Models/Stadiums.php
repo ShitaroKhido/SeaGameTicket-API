@@ -10,6 +10,7 @@ class Stadiums extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
     public function playgrounds(): HasMany
     {
         return $this->hasMany(Playgrounds::class);

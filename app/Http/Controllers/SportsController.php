@@ -12,7 +12,7 @@ class SportsController extends Controller
      */
     public function index()
     {
-        //
+        return Sports::all();
     }
 
     /**

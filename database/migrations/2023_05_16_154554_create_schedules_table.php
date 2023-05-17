@@ -14,15 +14,19 @@ return new class extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sport_id');
-            $table->unsignedBigInteger('first_country');
-            $table->unsignedBigInteger('second_country');
-            $table->unsignedBigInteger('events_id');
-            $table->unsignedBigInteger('playground_id');
             $table->foreign('sport_id')->references('id')->on('sports');
+
+            $table->unsignedBigInteger('first_country');
             $table->foreign('first_country')->references('id')->on('countries');
+
+            $table->unsignedBigInteger('second_country');
             $table->foreign('second_country')->references('id')->on('countries');
-            $table->foreign('events_id')->references('id')->on('events');
-            $table->foreign('playground_id')->references('id')->on('playgrounds');
+
+            $table->unsignedBigInteger('event_id');
+            $table->foreign('event_id')->references('id')->on('events')->cascadeOnDelete()->cascadeOnUpdate();
+
+            $table->unsignedBigInteger('playground_id');
+            $table->foreign('playground_id')->references('id')->on('playgrounds')->cascadeOnUpdate();
             $table->time('start_time');
             $table->time('end_time');
         });

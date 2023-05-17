@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Events;
+use App\Models\Schedules;
 use Illuminate\Http\Request;
 
 class EventsController extends Controller
@@ -12,7 +13,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //
+        return Events::all();
     }
 
     /**
@@ -20,15 +21,23 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->all() !== null) {
+            Events::create(
+                [
+                    'date' => $request->all()['date'],
+                    'available_seats' => $request->all()['available_seats'],
+                ]
+            );
+            return response(['message' => 'Success', 'data' => $request->all()], 200);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Events $events)
+    public function show(Events $events, $id)
     {
-        //
+        return $events::find($id);
     }
 
     /**
@@ -42,8 +51,8 @@ class EventsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Events $events)
+    public function destroy(Events $events, $id)
     {
-        //
+        $events::find($id)->delete();
     }
 }

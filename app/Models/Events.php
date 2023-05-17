@@ -10,6 +10,10 @@ class Events extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = [
+        'date',
+        'available_seats',
+    ];
     public function schedules(): HasMany
     {
         return $this->hasMany(Schedules::class);
